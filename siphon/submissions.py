@@ -38,6 +38,9 @@ def retrieve(outfile, subreddit=None, min_utc=0):
     while not done:
         results = get_submissions(api, subreddit=subreddit, min_utc=after)
 
+        if len(results) == 0:
+            done = True
+
         with open(outfile, 'a') as jsonfile:
             for result in results:
                 jsonfile.write('{}\n'.format(json.dumps(result)))
