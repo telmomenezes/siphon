@@ -11,5 +11,5 @@ if __name__ == '__main__':
             month_year = datetime.utcfromtimestamp(ts).strftime('%Y-%m')
             print(month_year)
             outfile = 'reddit-submissions/{}.json.gz'.format(month_year)
-            with gzip.open(outfile, 'a') as of:
+            with gzip.open(outfile, 'at') as of:
                 of.write('{}\n'.format(json.dumps(data)))
