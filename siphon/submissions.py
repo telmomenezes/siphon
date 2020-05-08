@@ -101,8 +101,7 @@ def retrieve_to_dir(outdir, subreddit=None, min_utc=0):
             ts = result['created_utc']
             month_year = datetime.utcfromtimestamp(ts).strftime('%Y-%m')
             if month_year != last_month_year:
-                outfile = glob.glob(
-                    os.path.join(outdir, '{}.json.gz'.format(month_year)))
+                outfile = os.path.join(outdir, '{}.json.gz'.format(month_year))
                 if jsonfile:
                     jsonfile.close()
                 jsonfile = gzip.open(outfile, 'at')
