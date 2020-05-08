@@ -43,10 +43,12 @@ def cli():
         if args.outfile:
             print('Retrieving reddit submissions to single file...')
             submissions.retrieve_to_file(
-                args.outfile, args.outdir, args.subreddit, min_utc)
+                args.outfile, args.subreddit, min_utc)
         elif args.outdir:
             print('Retrieving reddit submissions to directory...')
             submissions.retrieve_to_dir(
-                args.outfile, args.outdir, args.subreddit, min_utc)
+                args.outdir, args.subreddit, min_utc)
+        else:
+            print('Either --outfile or --outdir must be provided')
     else:
         print('Unknown command: {}'.format(args.command))

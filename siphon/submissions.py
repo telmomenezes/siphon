@@ -28,6 +28,8 @@ def cur_time_file(outfile, min_utc=0):
                         last_utc = data['created_utc']
     except Exception:
         pass
+    dt = datetime.utcfromtimestamp(last_utc).strftime('%Y-%m-%d %H:%M:%S')
+    print('current time: {}'.format(dt))
     return last_utc
 
 
@@ -40,6 +42,7 @@ def cur_file(outdir):
         if date_month > max_date_month:
             max_date_month = date_month
             latest_file = file_name
+    print('latest_file: {}'.format(latest_file))
     return latest_file
 
 
@@ -101,6 +104,7 @@ def retrieve_to_dir(outdir, subreddit=None, min_utc=0):
                 if jsonfile:
                     jsonfile.close()
                 jsonfile = gzip.open(outfile, 'at')
+                last_month_year = month_year
 
             jsonfile.write('{}\n'.format(json.dumps(result)))
 
