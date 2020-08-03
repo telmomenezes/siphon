@@ -9,9 +9,9 @@ from pushshift_py import PushshiftAPI
 
 def get_submissions(api, subreddit=None, min_utc=0):
     if subreddit is None:
-        gen = api.search_submissions(limit=500, sort='asc', after=min_utc)
+        gen = api.search_submissions(limit=5000, sort='asc', after=min_utc)
     else:
-        gen = api.search_submissions(limit=500, sort='asc', after=min_utc,
+        gen = api.search_submissions(limit=5000, sort='asc', after=min_utc,
                                      subreddit=subreddit)
     results = list(result.d_ for result in gen)
     return results
